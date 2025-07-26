@@ -22,6 +22,7 @@ jobs:
           rm -rf .next
           rm -rf node_modules
           rm -rf package-lock.json
+          rm -rf .env
 
       - name: Create .env file
         uses: ozaytsev86/create-env-file-action@v1
@@ -60,4 +61,4 @@ jobs:
             echo "Restarting PM2 process..."
             pm2 reload xjectro || pm2 start ecosystem.config.js --only xjectro
 
-            echo  Portfolio deployment completed successfully!"
+            echo Portfolio deployment completed successfully!"

@@ -7,10 +7,9 @@
   "scripts": {
     "dev": "next dev -p 3000",
     "check-types": "tsc --noEmit",
-    "build": "NODE_ENV=production next build",
-    "start": "NODE_ENV=production next start",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint",
-    "deploy": "npx deloyn push",
     "format": "prettier --write \"**/*.{ts,tsx,md,css,json,mjs}\""
   },
   "dependencies": {
