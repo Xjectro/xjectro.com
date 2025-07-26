@@ -59,6 +59,6 @@ jobs:
             npm run build
 
             echo "Restarting PM2 process..."
-            pm2 reload xjectro || pm2 start ecosystem.config.js --only xjectro
+            pm2 reload xjectro || pm2 start ecosystem.config.cjs --only xjectro
 
             echo Portfolio deployment completed successfully!"
