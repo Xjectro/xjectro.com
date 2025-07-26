@@ -2,11 +2,11 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { socialLinks } from "@//constants/social";
+import { socialLinks } from "@/constants/social";
 import Link from "next/link";
-import { projects } from "@//constants/projects";
-import { navigationItems } from "@//constants/navigation";
-import { apps } from "@//constants/apps";
+import { projects } from "@/constants/projects";
+import { navigationItems } from "@/constants/navigation";
+import { apps } from "@/constants/apps";
 
 const listVariants = {
   hidden: { opacity: 0, y: 20 },

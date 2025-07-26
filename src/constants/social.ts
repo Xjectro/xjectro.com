@@ -4,7 +4,7 @@ import {
   Twitter,
   Mail,
   Instagram,
-} from "@//components/ui/icons";
+} from "@/components/ui/icons";
 
 export const socialLinks = [
   {

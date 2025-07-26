@@ -5,10 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, Calendar } from "lucide-react";
-import { Button } from "@//components/ui/button";
-import { Badge } from "@//components/ui/badge";
-import { cn } from "@//lib/utils";
-import { Project } from "@//types/content";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
+import { Project } from "@/types/content";
 
 interface ProjectCardProps {
   project: Project;

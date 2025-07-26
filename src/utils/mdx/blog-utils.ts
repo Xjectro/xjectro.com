@@ -1,8 +1,8 @@
-import { getMDXData } from "@//utils/mdx/mdx-utils";
+import { getMDXData } from "@/utils/mdx/mdx-utils";
 import path from "path";
 
 export function getBlogs() {
-  return getMDXData(path.join(process.cwd(), "content"));
+  return getMDXData(path.join(process.cwd(), "src/content"));
 }
 
 export function getBlogBySlug(slug: string) {

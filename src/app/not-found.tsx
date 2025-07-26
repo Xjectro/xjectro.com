@@ -1,5 +1,5 @@
-import { NotFoundPage } from "@//components/features/not-found/page";
-import { generateMeta } from "@//utils/meta/generate-meta";
+import { NotFoundPage } from "@/components/features/not-found/page";
+import { generateMeta } from "@/utils/meta/generate-meta";
 
 export const metadata = generateMeta({
   title: "Page Not Found | 404",

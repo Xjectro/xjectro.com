@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 
 import { notFound } from "next/navigation";
-import { CustomMDX } from "@//components/ui/mdx";
-import { formatDate } from "@//utils/mdx/mdx-utils";
-import { MainLayout } from "@//components/layout/main-layout";
-import { Section } from "@//components/ui/section";
-import { getBlogBySlug } from "@//utils/mdx/blog-utils";
-import { generateMeta as createMetadata } from "@//utils/meta/generate-meta";
+import { CustomMDX } from "@/components/ui/mdx";
+import { formatDate } from "@/utils/mdx/mdx-utils";
+import { MainLayout } from "@/components/layout/main-layout";
+import { Section } from "@/components/ui/section";
+import { getBlogBySlug } from "@/utils/mdx/blog-utils";
+import { generateMeta as createMetadata } from "@/utils/meta/generate-meta";
 import Image from "next/image";
-import { socialLinks } from "@//constants/social";
+import { socialLinks } from "@/constants/social";
 import Link from "next/link";
 
 type Props = {

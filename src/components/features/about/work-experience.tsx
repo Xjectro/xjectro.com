@@ -1,17 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Section } from "@//components/ui/section";
+import { Section } from "@/components/ui/section";
 import {
   fadeInUp,
   staggerChildren,
   cardHover,
-} from "@//utils/motion/animations";
-import { Badge } from "@//components/ui/badge";
+} from "@/utils/motion/animations";
+import { Badge } from "@/components/ui/badge";
 import { CalendarDays, MapPin, Building2, ExternalLink } from "lucide-react";
-import { Button } from "@//components/ui/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { workExperiences } from "@//constants/work-experiences";
+import { workExperiences } from "@/constants/work-experiences";
 
 export function WorkExperience() {
   return (

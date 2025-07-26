@@ -1,9 +1,9 @@
-import { Section } from "@//components/ui/section";
-import { SkillGrid } from "@//components/features/skills/skill-grid";
-import { MainLayout } from "@//components/layout/main-layout";
-import { CTA } from "@//components/ui/cta";
-import { generateMeta } from "@//utils/meta/generate-meta";
-import { skills } from "@//constants/skills";
+import { Section } from "@/components/ui/section";
+import { SkillGrid } from "@/components/features/skills/skill-grid";
+import { MainLayout } from "@/components/layout/main-layout";
+import { CTA } from "@/components/ui/cta";
+import { generateMeta } from "@/utils/meta/generate-meta";
+import { skills } from "@/constants/skills";
 
 export const metadata = generateMeta({
   title: "Skills & Expertise",

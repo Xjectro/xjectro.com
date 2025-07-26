@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Star, GitCommit, Github } from "lucide-react";
 import Image from "next/image";
-import { socialLinks } from "@//constants/social";
+import { socialLinks } from "@/constants/social";
 import Link from "next/link";
 
 export function HomePage() {

@@ -1,4 +1,4 @@
-import { getBlogs } from "@//utils/mdx/blog-utils";
+import { getBlogs } from "@/utils/mdx/blog-utils";
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {

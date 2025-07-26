@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Skill } from "@//types/content";
-import { cn } from "@//lib/utils";
-import { Badge } from "@//components/ui/badge";
+import { Skill } from "@/types/content";
+import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
 
 interface SkillCardProps {
   skill: Skill;

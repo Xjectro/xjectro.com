@@ -1,7 +1,7 @@
-import { MainLayout } from "@//components/layout/main-layout";
-import { Section } from "@//components/ui/section";
-import { ConverterForm } from "@//components/apps/color-converter/converter-form";
-import { generateMeta } from "@//utils/meta/generate-meta";
+import { MainLayout } from "@/components/layout/main-layout";
+import { Section } from "@/components/ui/section";
+import { ConverterForm } from "@/components/apps/color-converter/converter-form";
+import { generateMeta } from "@/utils/meta/generate-meta";
 
 export const metadata = generateMeta({
   title: "Color Converter",

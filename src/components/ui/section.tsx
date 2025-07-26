@@ -1,4 +1,4 @@
-import { cn } from "@//lib/utils";
+import { cn } from "@/lib/utils";
 
 interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;

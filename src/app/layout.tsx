@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import { Inter as FontSans } from "next/font/google";
-import { Header } from "@//components/common/header";
-import { PageTransition } from "@//components/layout/page-transition";
+import { Header } from "@/components/common/header";
+import { PageTransition } from "@/components/layout/page-transition";
 import { Viewport } from "next";
 
 export const viewport: Viewport = {

@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ProjectCard } from "@//components/features/project/project-card";
-import { Project } from "@//types/content";
+import { ProjectCard } from "@/components/features/project/project-card";
+import { Project } from "@/types/content";
 
 export function ProjectGrid({ projects }: { projects: Project[] }) {
   return (

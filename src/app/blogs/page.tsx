@@ -1,9 +1,9 @@
-import { BlogGrid } from "@//components/features/blog/blog-grid";
-import { MainLayout } from "@//components/layout/main-layout";
-import { Section } from "@//components/ui/section";
-import { generateMeta } from "@//utils/meta/generate-meta";
-import { getBlogs } from "@//utils/mdx/blog-utils";
-import { CTA } from "@//components/ui/cta";
+import { BlogGrid } from "@/components/features/blog/blog-grid";
+import { MainLayout } from "@/components/layout/main-layout";
+import { Section } from "@/components/ui/section";
+import { generateMeta } from "@/utils/meta/generate-meta";
+import { getBlogs } from "@/utils/mdx/blog-utils";
+import { CTA } from "@/components/ui/cta";
 
 export const metadata = generateMeta({
   title: "Blogs",

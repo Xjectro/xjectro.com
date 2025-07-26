@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { Footer } from "@//components/common/footer";
+import { Footer } from "@/components/common/footer";
 
 export function MainLayout({
   children,

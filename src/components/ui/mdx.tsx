@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import React from "react";
-import { slugify } from "@//lib/utils";
+import { slugify } from "@/lib/utils";
 import Prism from "prismjs";
 
 function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {

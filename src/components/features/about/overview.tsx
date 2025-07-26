@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Section } from "@//components/ui/section";
+import { Section } from "@/components/ui/section";
 import {
   fadeInUp,
   staggerChildren,
   cardHover,
-} from "@//utils/motion/animations";
+} from "@/utils/motion/animations";
 
 export function Overview() {
   return (

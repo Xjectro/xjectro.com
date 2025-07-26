@@ -1,8 +1,8 @@
 "use client";
 
-import { SkillCard } from "@//components/features/skills/skill-card";
-import { Button } from "@//components/ui/button";
-import { Skill } from "@//types/content";
+import { SkillCard } from "@/components/features/skills/skill-card";
+import { Button } from "@/components/ui/button";
+import { Skill } from "@/types/content";
 import { useState } from "react";
 
 const levelOrder = ["Expert", "Advanced", "Intermediate", "Beginner"];

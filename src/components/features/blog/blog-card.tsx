@@ -5,9 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Calendar } from "lucide-react";
-import { Button } from "@//components/ui/button";
-import { cn } from "@//lib/utils";
-import { Blog } from "@//types/content";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { Blog } from "@/types/content";
 
 interface BlogProps {
   blog: Blog;

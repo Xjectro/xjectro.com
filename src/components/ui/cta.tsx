@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { Section } from "@//components/ui/section";
-import { Button } from "@//components/ui/button";
+import { Section } from "@/components/ui/section";
+import { Button } from "@/components/ui/button";
 
 export function CTA({
   title,

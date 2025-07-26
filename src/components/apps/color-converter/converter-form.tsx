@@ -1,18 +1,18 @@
 "use client";
 
 import React, { useState } from "react";
-import { Card, CardContent } from "@//components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@//components/ui/select";
+} from "@/components/ui/select";
 import Prism from "prismjs";
-import { Textarea } from "@//components/ui/textarea";
-import { Button } from "@//components/ui/button";
-import { Separator } from "@//components/ui/separator";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import {
   oklchToRgb,
   rgbToHsl,

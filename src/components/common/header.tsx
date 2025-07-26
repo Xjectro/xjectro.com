@@ -5,9 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { cn } from "@//lib/utils";
-import { Button } from "@//components/ui/button";
-import { navigationItems } from "@//constants/navigation";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { navigationItems } from "@/constants/navigation";
 
 const headerVariants = {
   initial: { y: -100, opacity: 0 },

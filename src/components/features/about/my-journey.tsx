@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Section } from "@//components/ui/section";
-import { fadeInUp, staggerChildren } from "@//utils/motion/animations";
+import { Section } from "@/components/ui/section";
+import { fadeInUp, staggerChildren } from "@/utils/motion/animations";
 
 export function MyJourney() {
   return (
@@ -22,14 +22,14 @@ export function MyJourney() {
             variants={fadeInUp()}
             className="mb-6 text-xl text-muted-foreground"
           >
-            I'm a passionate full-stack developer with expertise in creating
+            I&apos;m a passionate full-stack developer with expertise in creating
             beautiful, functional, and user-centered digital experiences.
           </motion.p>
           <motion.p
             variants={fadeInUp()}
             className="mb-6 text-muted-foreground"
           >
-            With over 7 years of experience, I've worked on diverse projects
+            With over 7 years of experience, I&apos;ve worked on diverse projects
             ranging from e-commerce platforms to enterprise applications. I
             specialize in modern web technologies and love solving complex
             problems through clean, efficient code.

@@ -1,9 +1,9 @@
-import { ProjectGrid } from "@//components/features/project/project-grid";
-import { Section } from "@//components/ui/section";
-import { CTA } from "@//components/ui/cta";
-import { MainLayout } from "@//components/layout/main-layout";
-import { generateMeta } from "@//utils/meta/generate-meta";
-import { projects } from "@//constants/projects";
+import { ProjectGrid } from "@/components/features/project/project-grid";
+import { Section } from "@/components/ui/section";
+import { CTA } from "@/components/ui/cta";
+import { MainLayout } from "@/components/layout/main-layout";
+import { generateMeta } from "@/utils/meta/generate-meta";
+import { projects } from "@/constants/projects";
 
 export const metadata = generateMeta({
   title: "My Projects",

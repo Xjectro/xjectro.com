@@ -8,20 +8,20 @@ import {
   IneligibleGroup,
 } from "./utils";
 import { useState } from "react";
-import { Button } from "@//components/ui/button";
-import { Input } from "@//components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectValue,
   SelectTrigger,
-} from "@//components/ui/select";
+} from "@/components/ui/select";
 import { EligibleGroups } from "./eligible-groups";
 import { IneligibleGroups } from "./ineligible-groups";
 import { LicenseFormProps } from "./types";
-import { Card, CardContent, CardTitle } from "@//components/ui/card";
-import { Separator } from "@//components/ui/separator";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 export function LicenseForm({ onAgeChange }: LicenseFormProps) {
   const [birthDate, setBirthDate] = useState("");

@@ -1,9 +1,9 @@
-import { MainLayout } from "@//components/layout/main-layout";
-import { CTA } from "@//components/ui/cta";
-import { MyJourney } from "@//components/features/about/my-journey";
-import { Overview } from "@//components/features/about/overview";
-import { generateMeta } from "@//utils/meta/generate-meta";
-import { WorkExperience } from "@//components/features/about/work-experience";
+import { MainLayout } from "@/components/layout/main-layout";
+import { CTA } from "@/components/ui/cta";
+import { MyJourney } from "@/components/features/about/my-journey";
+import { Overview } from "@/components/features/about/overview";
+import { generateMeta } from "@/utils/meta/generate-meta";
+import { WorkExperience } from "@/components/features/about/work-experience";
 
 export const metadata = generateMeta({
   title: "About Me",

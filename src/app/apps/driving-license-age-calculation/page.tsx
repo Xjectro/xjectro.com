@@ -1,8 +1,8 @@
-import { MainLayout } from "@//components/layout/main-layout";
-import { Section } from "@//components/ui/section";
-import { LicenseForm } from "@//components/apps/driving-license-age-calculation/license-form";
-import { generateMeta } from "@//utils/meta/generate-meta";
-import { Card, CardContent } from "@//components/ui/card";
+import { MainLayout } from "@/components/layout/main-layout";
+import { Section } from "@/components/ui/section";
+import { LicenseForm } from "@/components/apps/driving-license-age-calculation/license-form";
+import { generateMeta } from "@/utils/meta/generate-meta";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = generateMeta({
   title: "Driving License Age Calculator",

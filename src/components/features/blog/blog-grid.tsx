@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { BlogCard } from "./blog-card";
-import { Blog } from "@//types/content";
+import { Blog } from "@/types/content";
 
 interface BlogGridProps {
   blogs: Blog[];
