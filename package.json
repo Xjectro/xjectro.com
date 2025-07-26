@@ -39,7 +39,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.8",
     "@types/culori": "^4.0.0",
-    "@types/node": "22.15.24",
+    "@types/node": "24.1.0",
     "@types/prismjs": "^1.26.5",
     "@types/react": "19.1.8",
     "eslint": "^9.32.0",
