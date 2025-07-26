@@ -1,0 +1,53 @@
+---
+title: 'Object-Oriented Programming (OOP) in Python'
+publishedAt: '2025-05-31'
+image: '/assets/blogs/oop-in-python.webp'
+summary: 'A beginner-friendly introduction to object-oriented programming in Python, covering key concepts, benefits, and practical examples.'
+---
+
+## Object-Oriented Programming (OOP) in Python
+
+Object-Oriented Programming (OOP) is a programming paradigm that organizes code around objects and classes, making it easier to model real-world entities and relationships. Python is a popular language for OOP due to its simplicity and readability.
+
+## Key Concepts of OOP
+
+- **Class:** A blueprint for creating objects. Defines attributes (data) and methods (functions).
+- **Object:** An instance of a class. Represents a specific entity with its own data.
+- **Inheritance:** Allows a class to inherit attributes and methods from another class.
+- **Encapsulation:** Bundles data and methods together, restricting direct access to some components.
+- **Polymorphism:** Enables different classes to be used interchangeably if they implement the same methods.
+
+## Example: Defining a Class and Creating Objects
+
+```python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+    def speak(self):
+        print(f"{self.name} makes a sound.")
+
+cat = Animal("Whiskers")
+cat.speak()  # Output: Whiskers makes a sound.
+```
+
+## Inheritance Example
+
+```python
+class Dog(Animal):
+    def speak(self):
+        print(f"{self.name} barks.")
+
+dog = Dog("Buddy")
+dog.speak()  # Output: Buddy barks.
+```
+
+## Why Use OOP in Python?
+
+- **Code Reusability:** Inheritance and classes help avoid code duplication.
+- **Modularity:** Code is organized into logical, manageable pieces.
+- **Maintainability:** Easier to update and extend code.
+- **Real-World Modeling:** Objects map naturally to real-world concepts.
+
+## Conclusion
+
+OOP is a powerful way to structure Python programs, making them more organized, reusable, and easier to maintain. Mastering OOP concepts will help you write better Python code and tackle more complex projects with confidence.

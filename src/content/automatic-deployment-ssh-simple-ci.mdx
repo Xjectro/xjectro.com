@@ -1,0 +1,362 @@
+---
+title: 'Automatic Deployment with SSH Keys: Building a Simple CI System'
+publishedAt: '2025-06-28'
+image: '/assets/blogs/automatic-deployment-ssh-simple-ci.webp'
+summary: 'Learn how to set up automatic deployment using SSH keys and build a simple CI/CD pipeline. From basic concepts to practical implementation with security best practices.'
+---
+
+## Automatic Deployment with SSH Keys: Building a Simple CI System
+
+Manual deployment is time-consuming, error-prone, and doesn't scale well as your projects grow. Setting up automatic deployment with SSH keys can transform your development workflow, enabling seamless CI/CD pipelines that deploy your code safely and efficiently.
+
+## What is Automatic Deployment?
+
+Automatic deployment is the process of automatically releasing your code changes to production or staging environments without manual intervention. When combined with SSH (Secure Shell) keys for authentication, it provides a secure and reliable way to deploy applications.
+
+## Why SSH Keys for Deployment?
+
+- **Security:** SSH keys provide stronger authentication than passwords
+- **Automation-Friendly:** No interactive password prompts needed
+- **Granular Access Control:** Different keys can have different permissions
+- **Audit Trail:** Easy to track which key was used for deployments
+- **Revocable:** Keys can be easily disabled if compromised
+
+## Setting Up SSH Keys for Deployment
+
+### 1. Generate SSH Key Pair
+
+First, generate a dedicated SSH key pair for deployment:
+
+```bash
+# Generate a new SSH key
+ssh-keygen -t ed25519 -C "deployment@yourproject.com" -f ~/.ssh/deploy_key
+
+# Or use RSA if ed25519 isn't supported
+ssh-keygen -t rsa -b 4096 -C "deployment@yourproject.com" -f ~/.ssh/deploy_key
+```
+
+### 2. Configure the Server
+
+Copy the public key to your server:
+
+```bash
+# Copy public key to server
+ssh-copy-id -i ~/.ssh/deploy_key.pub user@your-server.com
+
+# Or manually add it to authorized_keys
+cat ~/.ssh/deploy_key.pub | ssh user@your-server.com "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+```
+
+### 3. Test the Connection
+
+Verify SSH key authentication works:
+
+```bash
+ssh -i ~/.ssh/deploy_key user@your-server.com
+```
+
+## Building a Simple CI System
+
+### Basic Deployment Script
+
+Create a deployment script that your CI system can execute:
+
+```bash
+#!/bin/bash
+# deploy.sh
+
+set -e  # Exit on any error
+
+# Configuration
+REPO_URL="git@github.com:username/project.git"
+DEPLOY_PATH="/var/www/your-app"
+BRANCH="main"
+SERVER_USER="deploy"
+SERVER_HOST="your-server.com"
+
+echo "🚀 Starting deployment..."
+
+# Connect to server and deploy
+ssh -i ~/.ssh/deploy_key $SERVER_USER@$SERVER_HOST << 'EOF'
+    cd /var/www/your-app
+    echo "📦 Pulling latest changes..."
+    git pull origin main
+    
+    echo "📋 Installing dependencies..."
+    npm install --production
+    
+    echo "🔨 Building application..."
+    npm run build
+    
+    echo "🔄 Restarting services..."
+    sudo systemctl restart your-app
+    
+    echo "✅ Deployment completed successfully!"
+EOF
+
+echo "🎉 Deployment finished!"
+```
+
+### GitHub Actions CI/CD Pipeline
+
+Create `.github/workflows/deploy.yml`:
+
+```yaml
+name: Deploy to Production
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run tests
+      run: npm test
+    
+    - name: Run linting
+      run: npm run lint
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+        ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
+    
+    - name: Deploy to server
+      run: |
+        ssh -o StrictHostKeyChecking=no ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} << 'EOF'
+          cd ${{ secrets.DEPLOY_PATH }}
+          git pull origin main
+          npm install --production
+          npm run build
+          sudo systemctl restart your-app
+        EOF
+```
+
+## Security Best Practices
+
+### 1. Use Dedicated Deployment User
+
+Create a specific user for deployments with limited permissions:
+
+```bash
+# Create deploy user
+sudo useradd -m -s /bin/bash deploy
+
+# Add to necessary groups
+sudo usermod -aG www-data deploy
+
+# Set up sudo permissions for specific services only
+echo "deploy ALL=(ALL) NOPASSWD: /bin/systemctl restart your-app" | sudo tee /etc/sudoers.d/deploy
+```
+
+### 2. Restrict SSH Access
+
+Configure SSH for the deployment key in `~/.ssh/authorized_keys`:
+
+```bash
+# Restrict the key to specific commands and IP ranges
+command="cd /var/www/your-app && git pull && npm install --production && npm run build",from="192.168.1.0/24,10.0.0.0/8" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5... deployment@yourproject.com
+```
+
+### 3. Environment Variables and Secrets
+
+Never commit sensitive data. Use environment variables:
+
+```bash
+# .env.production (never commit this)
+DATABASE_URL=postgresql://user:pass@localhost/db
+API_SECRET=your-secret-key
+JWT_SECRET=another-secret
+```
+
+### 4. Monitor and Log Deployments
+
+Add logging to your deployment script:
+
+```bash
+# Add to deploy script
+LOG_FILE="/var/log/deployments.log"
+echo "$(date): Deployment started by $(whoami)" >> $LOG_FILE
+
+# Log deployment results
+if [ $? -eq 0 ]; then
+    echo "$(date): Deployment successful" >> $LOG_FILE
+else
+    echo "$(date): Deployment failed" >> $LOG_FILE
+fi
+```
+
+## Advanced CI/CD Features
+
+### Rolling Deployments
+
+Implement zero-downtime deployments:
+
+```bash
+# Blue-green deployment script
+CURRENT_VERSION=$(readlink /var/www/current)
+NEW_VERSION="/var/www/releases/$(date +%Y%m%d%H%M%S)"
+
+# Deploy to new version
+mkdir -p $NEW_VERSION
+git clone $REPO_URL $NEW_VERSION
+cd $NEW_VERSION && npm install && npm run build
+
+# Switch traffic to new version
+ln -sfn $NEW_VERSION /var/www/current
+sudo systemctl reload nginx
+
+# Keep last 3 releases
+ls -1dt /var/www/releases/* | tail -n +4 | xargs rm -rf
+```
+
+### Health Checks
+
+Add automatic health checks after deployment:
+
+```bash
+# Health check function
+check_health() {
+    local url="https://your-app.com/health"
+    local max_attempts=30
+    local attempt=1
+    
+    while [ $attempt -le $max_attempts ]; do
+        if curl -s $url | grep -q "OK"; then
+            echo "✅ Health check passed"
+            return 0
+        fi
+        echo "⏳ Attempt $attempt/$max_attempts failed, retrying..."
+        sleep 10
+        ((attempt++))
+    done
+    
+    echo "❌ Health check failed after $max_attempts attempts"
+    return 1
+}
+
+# Use in deployment script
+if check_health; then
+    echo "🎉 Deployment successful!"
+else
+    echo "💥 Rolling back deployment..."
+    # Rollback logic here
+fi
+```
+
+## Common Deployment Patterns
+
+<Table data={{
+  headers: [
+    'Pattern',
+    'Use Case',
+    'Complexity',
+    'Downtime'
+  ],
+  rows: [
+    ['Simple Script', 'Small projects', 'Low', 'Yes'],
+    ['Blue-Green', 'Zero downtime needed', 'Medium', 'No'],
+    ['Rolling Update', 'Gradual rollout', 'High', 'Minimal'],
+    ['Canary Release', 'Risk mitigation', 'High', 'No'],
+  ]
+}} />
+
+## Troubleshooting Common Issues
+
+### SSH Permission Denied
+```bash
+# Check SSH key permissions
+chmod 600 ~/.ssh/deploy_key
+chmod 644 ~/.ssh/deploy_key.pub
+
+# Verify SSH agent
+ssh-add ~/.ssh/deploy_key
+ssh-add -l
+```
+
+### Deployment Script Fails
+```bash
+# Add debugging to scripts
+set -x  # Print commands as they execute
+set -e  # Exit on first error
+
+# Test components individually
+ssh -i ~/.ssh/deploy_key user@server "echo 'Connection works'"
+```
+
+### File Permission Issues
+```bash
+# Fix ownership after deployment
+sudo chown -R www-data:www-data /var/www/your-app
+sudo chmod -R 755 /var/www/your-app
+```
+
+## Monitoring and Alerts
+
+Set up deployment notifications:
+
+```bash
+# Slack notification function
+send_slack_notification() {
+    local message="$1"
+    local status="$2"
+    local color="good"
+    
+    if [ "$status" != "success" ]; then
+        color="danger"
+    fi
+    
+    curl -X POST -H 'Content-type: application/json' \
+        --data "{\"attachments\":[{\"color\":\"$color\",\"text\":\"$message\"}]}" \
+        $SLACK_WEBHOOK_URL
+}
+
+# Use in deployment script
+if [ $? -eq 0 ]; then
+    send_slack_notification "✅ Deployment to production successful" "success"
+else
+    send_slack_notification "❌ Deployment to production failed" "error"
+fi
+```
+
+## Best Practices Summary
+
+1. **Use dedicated SSH keys** for deployment, separate from personal keys
+2. **Implement proper access controls** with limited user permissions
+3. **Always test deployments** in staging before production
+4. **Monitor deployment health** with automated checks
+5. **Keep deployment logs** for troubleshooting and auditing
+6. **Have a rollback plan** ready for when things go wrong
+7. **Use environment-specific configurations** and secrets management
+8. **Automate everything** but keep manual override capabilities
+
+## Conclusion
+
+Setting up automatic deployment with SSH keys creates a robust foundation for your CI/CD pipeline. While the initial setup requires careful attention to security and configuration, the long-term benefits of reliable, automated deployments far outweigh the investment.
+
+Start simple with basic scripts, then gradually add more sophisticated features like health checks, rollback mechanisms, and monitoring. Remember that the goal is to make deployments so reliable and routine that they become invisible to your development process.
+
+With proper SSH key management and deployment automation, you'll spend less time on manual deployment tasks and more time building features that matter to your users.

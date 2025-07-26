@@ -1,0 +1,63 @@
+name: Deploy to Production
+on:
+  workflow_dispatch:
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    concurrency:
+      group: ${{ github.workflow }}
+      cancel-in-progress: true
+
+    if: ${{ github.ref == 'refs/heads/main' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare deployment files
+        run: |
+          rm -rf .git
+          rm -rf .github
+          rm -rf .vscode
+          rm -rf .next
+          rm -rf node_modules
+          rm -rf package-lock.json
+
+      - name: Create .env file
+        uses: ozaytsev86/create-env-file-action@v1
+        with:
+          ENV_NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          ENV_NEXT_PUBLIC_CONTACT_EMAIL: ${{ secrets.NEXT_PUBLIC_CONTACT_EMAIL }}
+          ENV_NODE_ENV: ${{ secrets.NODE_ENV }}
+          ENV_NEXT_PUBLIC_BASE_TITLE: ${{ secrets.NEXT_PUBLIC_BASE_TITLE }}
+
+      - name: Upload Files
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          username: ${{ secrets.REMOTE_USER }}
+          server: ${{ secrets.REMOTE_HOST }}
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          local_path: "./"
+          remote_path: "/var/www/xjectro/production"
+
+      - name: Build and deploy Portfolio with PM2
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            set -e  # Exit on any error
+            echo "Navigating to Portfolio directory..."
+            cd /var/www/xjectro/production
+
+            echo "Installing dependencies..."
+            npm install
+
+            echo "Building the application..."
+            npm run build
+
+            echo "Restarting PM2 process..."
+            pm2 reload xjectro || pm2 start ecosystem.config.js --only xjectro
+
+            echo  Portfolio deployment completed successfully!"
