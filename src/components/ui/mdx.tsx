@@ -64,7 +64,7 @@ function RoundedImage(props: React.ComponentProps<typeof Image>) {
 
 function createHeading(level: number) {
   const Heading = ({ children }: { children: React.ReactNode }) => {
-    let slug = slugify(
+    const slug = slugify(
       typeof children === "string"
         ? children
         : React.Children.toArray(children).join(" "),
@@ -124,7 +124,7 @@ function Code(props: React.ComponentProps<"code">) {
         Prism.languages[language] || Prism.languages.javascript,
         language,
       );
-    } catch (e) {
+    } catch {
       html = code;
     }
     return (
@@ -158,7 +158,7 @@ function MarkdownTable(props: React.ComponentProps<"table">) {
   );
 }
 
-let components = {
+const components = {
   h1: createHeading(1),
   h2: createHeading(2),
   h3: createHeading(3),
@@ -173,7 +173,7 @@ let components = {
   Image: RoundedImage,
   a: CustomLink,
   Table,
-  table: MarkdownTable, // Add support for markdown tables
+  table: MarkdownTable,
   code: Code,
 };
 
