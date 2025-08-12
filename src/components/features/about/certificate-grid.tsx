@@ -12,7 +12,7 @@ export function CertificateGrid({
 }) {
   return (
     <div className="space-y-8">
-      <h2 className="text-3xl font-bold">Core Values</h2>
+      <h2 className="text-3xl font-bold">Certificates</h2>
       <motion.div
         layout
         initial="hidden"
