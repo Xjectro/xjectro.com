@@ -445,4 +445,60 @@ export const skills: Skill[] = [
     level: "Advanced",
     category: "Backend",
   },
+  {
+    name: "SignalR",
+    icon: "📡",
+    description:
+      "Real-time communication library for ASP.NET Core, enabling instant updates via WebSockets and fallbacks.",
+    level: "Expert",
+    category: "Backend",
+  },
+  {
+    name: "MS SQL Server",
+    icon: "🗄️",
+    description:
+      "Relational database management system developed by Microsoft, optimized for enterprise-scale applications.",
+    level: "Advanced",
+    category: "Database",
+  },
+  {
+    name: "Entity Framework Core",
+    icon: "📊",
+    description:
+      "Modern object-relational mapper (ORM) for .NET Core, enabling LINQ queries and database migrations.",
+    level: "Advanced",
+    category: "Database",
+  },
+  {
+    name: "JWT",
+    icon: "🔑",
+    description:
+      "JSON Web Token based authentication for securely transmitting claims between parties.",
+    level: "Expert",
+    category: "Backend",
+  },
+  {
+    name: "Refresh Token",
+    icon: "♻️",
+    description:
+      "Token-based re-authentication mechanism to maintain secure sessions without re-login.",
+    level: "Expert",
+    category: "Backend",
+  },
+  {
+    name: "Role-Based Access Control",
+    icon: "🛡️",
+    description:
+      "Authorization method granting access based on user roles and permissions.",
+    level: "Expert",
+    category: "Backend",
+  },
+  {
+    name: "WebSocket",
+    icon: "🔌",
+    description:
+      "Full-duplex communication protocol for real-time web applications.",
+    level: "Expert",
+    category: "Backend",
+  },
 ];

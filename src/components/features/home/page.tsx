@@ -38,19 +38,19 @@ export function HomePage() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="mb-4 flex w-full items-center justify-center gap-6"
             >
-              <div className="flex items-center gap-2 rounded-lg bg-background/80 px-3 py-1 shadow">
+              <div className="flex items-center gap-2 rounded-lg px-3 py-1 shadow">
                 <Star size={22} className="text-yellow-400" />
-                <span className="font-semibold">36</span>
+                <span className="font-semibold">160+</span>
                 <span className="text-sm text-muted-foreground">Stars</span>
               </div>
-              <div className="flex items-center gap-2 rounded-lg bg-background/80 px-3 py-1 shadow">
+              <div className="flex items-center gap-2 rounded-lg px-3 py-1 shadow">
                 <GitCommit size={22} className="text-emerald-500" />
-                <span className="font-semibold">449</span>
+                <span className="font-semibold">500+</span>
                 <span className="text-sm text-muted-foreground">Commits</span>
               </div>
-              <div className="flex items-center gap-2 rounded-lg bg-background/80 px-3 py-1 shadow">
+              <div className="flex items-center gap-2 rounded-lg px-3 py-1 shadow">
                 <Github size={22} className="text-blue-500" />
-                <span className="font-semibold">29</span>
+                <span className="font-semibold">20+</span>
                 <span className="text-sm text-muted-foreground">Repos</span>
               </div>
             </motion.div>

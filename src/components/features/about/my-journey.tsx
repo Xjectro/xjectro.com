@@ -22,17 +22,18 @@ export function MyJourney() {
             variants={fadeInUp()}
             className="mb-6 text-xl text-muted-foreground"
           >
-            I&apos;m a passionate full-stack developer with expertise in creating
-            beautiful, functional, and user-centered digital experiences.
+            I&apos;m a passionate full-stack developer with expertise in
+            creating beautiful, functional, and user-centered digital
+            experiences.
           </motion.p>
           <motion.p
             variants={fadeInUp()}
             className="mb-6 text-muted-foreground"
           >
-            With over 7 years of experience, I&apos;ve worked on diverse projects
-            ranging from e-commerce platforms to enterprise applications. I
-            specialize in modern web technologies and love solving complex
-            problems through clean, efficient code.
+            With over 7 years of experience, I&apos;ve worked on diverse
+            projects ranging from e-commerce platforms to enterprise
+            applications. I specialize in modern web technologies and love
+            solving complex problems through clean, efficient code.
           </motion.p>
         </motion.div>
 

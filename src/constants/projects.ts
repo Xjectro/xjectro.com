@@ -110,6 +110,38 @@ export const projects: Project[] = [
   },
   {
     id: "5",
+    title: "Calvero Chat",
+    description:
+      "Calvero Chat is a fully secure, real-time messaging platform built with .NET, SignalR, and Next.js. It delivers encrypted, low-latency communication with features like private and group chats, online presence tracking, typing indicators, and file sharing. The backend uses a layered architecture with JWT authentication, refresh tokens, and role-based access control, ensuring robust security. The frontend, built in Next.js and TypeScript, provides a fast and responsive UI with seamless real-time updates powered by SignalR. Designed with scalability and security at its core, Calvero Chat is engineered for enterprise-grade deployments.",
+    image: "/assets/projects/calvero-chat.webp",
+    tags: [
+      ".NET",
+      "SignalR",
+      "Next.js",
+      "TypeScript",
+      "JWT",
+      "Refresh Token",
+      "Role-Based Access Control",
+      "Real-Time",
+      "WebSocket",
+      "Tailwind CSS",
+      "Entity Framework",
+      "MS SQL Server",
+      "Docker",
+      "Authentication",
+      "Authorization",
+      "Scalable",
+      "Secure",
+    ],
+    category: "Messaging Platform",
+    liveUrl: "https://chat.calvero.club/",
+    githubUrl: "https://github.com/Xjectro/calvero-club-chat-api",
+    slug: "calvero-chat",
+    featured: true,
+    year: "2025",
+  },
+  {
+    id: "6",
     title: "Savaş Oto",
     description:
       "Savaş Oto was developed specifically for the electrical and automotive industries—by me, personally. I built a fast and robust infrastructure using powerful technologies like Next.js, TailwindCSS, Redis, Prisma, PostgreSQL, Docker, and PM2. Why did I do it this way? Because I built the site 😎 I wanted it to be a practical, high-performance platform worthy of the modern industrial world. The code, the design, the system architecture—every part of it went through my hands. In short, this project is a digital industrial website 'crafted by a true master.'",
@@ -135,7 +167,7 @@ export const projects: Project[] = [
     year: "2025",
   },
   {
-    id: "6",
+    id: "7",
     title: "New Generation Library Herby",
     description:
       "I built an audio sharing platform with Nuxt, kind of like Blerp... But the code? Oh no, don’t even look at it! It’s basically a “how not to code” masterclass 😅",
@@ -159,7 +191,7 @@ export const projects: Project[] = [
     year: "2024",
   },
   {
-    id: "7",
+    id: "8",
     title: "Payload CMS Boilerplate",
     description:
       "A modern, production-ready boilerplate built with Payload CMS. This template provides a solid foundation for content management systems with modern web technologies, featuring a clean architecture and best practices for scalable CMS development.",
@@ -188,7 +220,7 @@ export const projects: Project[] = [
     year: "2025",
   },
   {
-    id: "8",
+    id: "9",
     title: "Spring Boot GraphQL API",
     description:
       "Modern, scalable, and secure backend API template built with Spring Boot and GraphQL. This project demonstrates best practices for maintainable, extensible, and production-ready backend development.",
@@ -223,7 +255,7 @@ export const projects: Project[] = [
     year: "2025",
   },
   {
-    id: "9",
+    id: "10",
     title: "Spring Boot GraphQL Advert Platform",
     description:
       "A Spring Boot-based web platform that allows users to create, manage, and query advertisements using GraphQL and JWT-based authentication.",
@@ -255,7 +287,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "10",
+    id: "11",
     title: "GraphQL Apollo Server",
     description:
       "A modern GraphQL API server built with Node.js, TypeScript, Apollo Server, and Prisma ORM. It features JWT authentication, role-based permissions, PostgreSQL database, Redis caching, and Docker containerization.",
@@ -288,7 +320,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "11",
+    id: "12",
     title: "Deloyn",
     description:
       "Deloyn is a simple command-line tool to publish and deploy your project via SSH and SFTP under Node.",
@@ -323,7 +355,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "12",
+    id: "13",
     title: "Youtube Automation",
     description:
       "This project is a bot that automatically downloads memes from Reddit and uploads them as YouTube Shorts. 🚀",
@@ -357,7 +389,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "13",
+    id: "14",
     title: "Driving License Age Calculation",
     description:
       "A web application that helps users find out which driving license groups they are eligible for based on their country and date of birth. Supports multiple countries and provides eligibility breakdown by age group.",
@@ -385,7 +417,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "14",
+    id: "15",
     title: "Color Converter",
     description:
       "A web app to convert between OKLCH, HSL, HEX, and RGB color formats. Built with React, Next.js, and Tailwind CSS. Features instant conversion, color swatches, and a modern UI.",

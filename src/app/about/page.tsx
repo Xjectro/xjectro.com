@@ -4,6 +4,9 @@ import { MyJourney } from "@/components/features/about/my-journey";
 import { Overview } from "@/components/features/about/overview";
 import { generateMeta } from "@/utils/meta/generate-meta";
 import { WorkExperience } from "@/components/features/about/work-experience";
+import { CertificateGrid } from "@/components/features/about/certificate-grid";
+import { certificates } from "@/constants/certificates";
+import { Section } from "@/components/ui/section";
 
 export const metadata = generateMeta({
   title: "About Me",
@@ -21,6 +24,9 @@ export default function Page() {
       <MyJourney />
       <WorkExperience />
       <Overview />
+      <Section>
+        <CertificateGrid certificates={certificates} />
+      </Section>
       <CTA
         title="Let's Create Something Amazing Together"
         description="I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision."

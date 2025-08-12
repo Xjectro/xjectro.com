@@ -30,3 +30,13 @@ export type Project = {
   featured?: boolean;
   year: string;
 };
+
+export type Certificate = {
+  id: string;
+  name: string;
+  url: string;
+  date: Date;
+  expiry: Date;
+  platform: string;
+  imageUrl: string;
+};

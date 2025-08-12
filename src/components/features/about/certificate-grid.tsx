@@ -1,11 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ProjectCard } from "@/components/features/project/project-card";
-import { Project } from "@/types/content";
+import { CertificateCard } from "@/components/features/about/certificate-card";
+import { Certificate } from "@/types/content";
 import { listVariants } from "@/utils/motion/animations";
 
-export function ProjectGrid({ projects }: { projects: Project[] }) {
+export function CertificateGrid({
+  certificates,
+}: {
+  certificates: Certificate[];
+}) {
   return (
     <motion.div
       layout
@@ -15,11 +19,10 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
       variants={listVariants}
       className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
     >
-      {projects.map((project, index) => (
-        <ProjectCard
-          key={project.id}
-          project={project}
-          featured={index === 0}
+      {certificates.map((certificate, index) => (
+        <CertificateCard
+          key={certificate.id}
+          certificate={certificate}
           index={index}
         />
       ))}

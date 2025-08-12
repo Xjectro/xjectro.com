@@ -1,47 +1,40 @@
 "use client";
 
 import { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, Calendar } from "lucide-react";
+import { ArrowUpRight, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { Project } from "@/types/content";
+import { Certificate } from "@/types/content";
 import { cardVariants } from "@/utils/motion/animations";
 
-interface ProjectCardProps {
-  project: Project;
-  featured?: boolean;
+interface CertificateCardProps {
+  certificate: Certificate;
   index: number;
 }
 
-export function ProjectCard({
-  project,
-  featured = false,
-  index,
-}: ProjectCardProps) {
+export function CertificateCard({ certificate, index }: CertificateCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
-      id={project.id}
+      id={certificate.id}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
       variants={cardVariants}
-      className={cn(
-        "group relative overflow-hidden rounded-xl border bg-card shadow-sm transition-all duration-300 hover:shadow-xl",
-        featured && "md:col-span-2 md:row-span-2",
-      )}
+      className="group relative overflow-hidden rounded-xl border bg-card shadow-sm transition-all duration-300 hover:shadow-xl"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative aspect-video overflow-hidden">
         <Image
-          src={project.image}
-          alt={project.title}
+          src={certificate.imageUrl}
+          alt={certificate.name}
           fill
           className={cn(
             "object-cover transition-all duration-700",
@@ -61,27 +54,15 @@ export function ProjectCard({
           transition={{ duration: 0.3 }}
           className="absolute inset-0 flex items-center justify-center gap-4"
         >
-          {project.liveUrl && (
+          {certificate.url && (
             <Button asChild size="lg" variant="secondary" className="shadow-lg">
               <Link
-                href={project.liveUrl}
+                href={certificate.url}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span>View Site</span>
+                <span>View Certificate</span>
                 <ArrowUpRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          )}
-          {project.githubUrl && (
-            <Button asChild size="lg" variant="outline" className="shadow-lg">
-              <Link
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="mr-2 h-4 w-4" />
-                <span>Code</span>
               </Link>
             </Button>
           )}
@@ -91,29 +72,16 @@ export function ProjectCard({
       <div className="relative space-y-4 p-6">
         <div className="flex items-center gap-2">
           <Badge variant="secondary" className="font-normal">
-            {project.category}
+            {certificate.platform}
           </Badge>
           <span className="flex items-center gap-1 text-sm text-muted-foreground">
             <Calendar size={14} />
-            {project.year}
+            {new Date(certificate.date).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
           </span>
-        </div>
-
-        <div>
-          <h3 className="mb-2 text-xl font-semibold leading-tight">
-            {project.title}
-          </h3>
-          <p className="line-clamp-2 text-muted-foreground">
-            {project.description}
-          </p>
-        </div>
-
-        <div className="flex flex-wrap gap-2 pt-2">
-          {project.tags.map((tag: string) => (
-            <Badge key={tag} variant="outline" className="bg-muted/50">
-              {tag}
-            </Badge>
-          ))}
         </div>
       </div>
     </motion.div>

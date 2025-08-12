@@ -36,7 +36,7 @@ export function WorkExperience() {
                   variants={cardHover}
                   className="group relative"
                 >
-                  <div className="absolute left-6 top-8 z-10 hidden h-4 w-4 rounded-full border-4 border-background bg-primary shadow-lg transition-transform duration-300 group-hover:scale-125 md:block" />
+                  <div className="sticky top-24 z-10 ml-6 hidden h-4 w-4 rounded-full border-4 border-background bg-primary shadow-lg transition-transform duration-300 group-hover:scale-125 md:block" />
 
                   <div className="rounded-lg border border-border/50 bg-card/50 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 md:ml-16">
                     <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -82,7 +82,7 @@ export function WorkExperience() {
                         ))}
                       </div>
                     </div>
-                    <div className="mt-4 flex items-center gap-4 border-t border-border/50 pt-4">
+                    <div className="mt-4 flex flex-wrap items-center gap-4 border-t border-border/50 pt-4">
                       <Link href={`/projects#${value.relativeProjectId}`}>
                         <Button variant="outline">
                           View related project <ExternalLink />

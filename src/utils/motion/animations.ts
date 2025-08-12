@@ -69,7 +69,7 @@ export const imageZoom: Variants = {
   hover: {
     scale: 1.1,
     transition: {
-      duration: 0.4,
+      duration: 0.1,
       ease: "easeOut",
     },
   },
@@ -91,6 +91,27 @@ export const pageTransition: Variants = {
     transition: {
       duration: 0.3,
       ease: "easeIn",
+    },
+  },
+};
+
+export const cardVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
+export const listVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      staggerChildren: 0.12,
     },
   },
 };
