@@ -24,7 +24,8 @@ export default function Page() {
       <MyJourney />
       <WorkExperience />
       <Overview />
-      <Section>
+      <Section className="space-y-8">
+        <h2 className="text-3xl font-bold">Certificates</h2>
         <CertificateGrid certificates={certificates} />
       </Section>
       <CTA

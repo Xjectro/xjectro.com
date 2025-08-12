@@ -11,24 +11,21 @@ export function CertificateGrid({
   certificates: Certificate[];
 }) {
   return (
-    <div className="space-y-8">
-      <h2 className="text-3xl font-bold">Certificates</h2>
-      <motion.div
-        layout
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={listVariants}
-        className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
-      >
-        {certificates.map((certificate, index) => (
-          <CertificateCard
-            key={certificate.id}
-            certificate={certificate}
-            index={index}
-          />
-        ))}
-      </motion.div>
-    </div>
+    <motion.div
+      layout
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={listVariants}
+      className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+    >
+      {certificates.map((certificate, index) => (
+        <CertificateCard
+          key={certificate.id}
+          certificate={certificate}
+          index={index}
+        />
+      ))}
+    </motion.div>
   );
 }
